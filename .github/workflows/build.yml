@@ -20,11 +20,13 @@ jobs:
 
       - name: Install JDK 21
         run: |
-          sudo add-apt-repository ppa:linuxuprising/java -y
-          sudo apt-get update
-          echo oracle-java21-installer shared/accepted-oracle-license-v1-2 select true | sudo /usr/bin/debconf-set-selections
-          sudo apt-get install oracle-java21-installer -y
-          sudo apt-get install oracle-java21-set-default -y
+#          sudo add-apt-repository ppa:linuxuprising/java -y
+#          sudo apt-get update
+#          echo oracle-java21-installer shared/accepted-oracle-license-v1-2 select true | sudo /usr/bin/debconf-set-selections
+#          sudo apt-get install oracle-java21-installer -y
+#          sudo apt-get install oracle-java21-set-default -y
+               sudo apt-get update
+               sudo apt-get install default-jdk
 
       - name: Compile Project
         run: javac -sourcepath src -d out src/*.java src/**/*.java

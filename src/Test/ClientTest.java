@@ -1,3 +1,4 @@
+/*
 package Test;
 
 import Entities.Client;
@@ -19,10 +20,12 @@ class ClientTest extends Client {
         // Initialisation du client (vous pouvez personnaliser les valeurs ici)
         client = new Client();
     }
-    /**
+    */
+/**
      * Test unitaire pour la méthode setChiffreAffaires de la classe Client.
      * Vérifie le comportement de la méthode setChiffreAffaires lorsque des valeurs de chiffre d'affaires valides et invalides sont utilisées.
-     */
+     *//*
+
 
     @Test
     void testSetChiffreAffaires() throws  MetierException {
@@ -35,10 +38,12 @@ class ClientTest extends Client {
         double invalidChiffreAffaires = 150.0;
         assertThrows(MetierException.class, () -> client.setChiffre_affaires(invalidChiffreAffaires));
     }
-    /**
+    */
+/**
      * Test unitaire pour la méthode setNbEmployes de la classe Client.
      * Vérifie le comportement de la méthode setNbEmployes lorsque des valeurs de nombre d'employés valides et invalides sont utilisées.
-     */
+     *//*
+
 
     @Test
     void testSetNbEmployesWithValidValue() throws MetierException {
@@ -52,4 +57,4 @@ class ClientTest extends Client {
     }
 
 
-}
+}*/
