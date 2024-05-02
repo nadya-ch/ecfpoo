@@ -143,7 +143,7 @@ public class Formulaire extends JDialog {
 
                     case MODIFICATION:
 
-                        raison_socilae = txtraison.getText();
+                        raison_sociale = txtraison.getText();
                         numrue = txtnumrue.getText();
                         nomrue = txtNomru.getText();
                         ville = txtville.getText();
@@ -155,7 +155,7 @@ public class Formulaire extends JDialog {
 
                         if (client_prospect == Choix.CLIENT) {
 
-                            Client client = new Client(Integer.parseInt(txtident.getText()), raison_socilae, numrue, nomrue, code_postale, ville,
+                            Client client = new Client(Integer.parseInt(txtident.getText()), raison_sociale, numrue, nomrue, code_postale, ville,
                                     tel, email, comment, Double.parseDouble(txtchiffr_datepros.getText()),
                                     Integer.parseInt(txtnbemploy_prospectinteress.getText()));
                             ControleurFormulaire.modification(client);
@@ -167,7 +167,7 @@ public class Formulaire extends JDialog {
                             String prospe_interr = txtnbemploy_prospectinteress.getText();
 
 
-                            Prospect prospect = new Prospect(0, raison_socilae, numrue, nomrue, code_postale, ville, tel,
+                            Prospect prospect = new Prospect(0, raison_sociale, numrue, nomrue, code_postale, ville, tel,
                                     email, comment, date_prosp, prospe_interr);
                             ControleurFormulaire.modification(prospect);
                         }JOptionPane.showMessageDialog(null, "vous venez de modifer un "+client_prospect);

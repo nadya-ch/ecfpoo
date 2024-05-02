@@ -2743,3 +2743,10 @@ The last packet successfully received from the server was 22 217 milliseconds 
 25/03/2024 11:08:44 Level : INFO / Message : début pg / Méthode : main / Classe : Main
 25/03/2024 11:08:44 Level : INFO / Message : fin pg / Méthode : main / Classe : Main
 25/03/2024 11:08:48 Level : INFO / Message : connexion établie / Méthode : getInstance / Classe : DAO.Connexion
+22/04/2024 11:00:30 Level : INFO / Message : début pg / Méthode : main / Classe : Main
+22/04/2024 11:00:30 Level : INFO / Message : fin pg / Méthode : main / Classe : Main
+22/04/2024 11:00:34 Level : SEVERE / Message : erreur de fichier / Méthode : <init> / Classe : DAO.Connexion
+22/04/2024 11:00:34 Level : SEVERE / Message : pb base de donnéeserreur lors de la connexion à la base de données :  / Méthode : actionPerformed / Classe : UI.Accueil$5
+22/04/2024 11:01:04 Level : INFO / Message : début pg / Méthode : main / Classe : Main
+22/04/2024 11:01:04 Level : INFO / Message : fin pg / Méthode : main / Classe : Main
+22/04/2024 11:01:08 Level : INFO / Message : connexion établie / Méthode : getInstance / Classe : DAO.Connexion
