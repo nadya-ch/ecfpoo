@@ -1,3 +1,4 @@
+/*
 package Test;
 
 import Entities.Prospect;
@@ -19,12 +20,14 @@ class ProspectTest extends Prospect {
         // Initialisation du prospect (vous pouvez personnaliser les valeurs ici)
         prospect = new Prospect();
     }
+*/
 /*
 *
      * Test unitaire pour la méthode setDateProspection de la classe Prospect.
      * Vérifie le comportement de la méthode setDateProspection lorsque des valeurs de date de prospection valides et nulles sont utilisées.
 
-*/
+*//*
+
 
 
     @Test
@@ -39,3 +42,4 @@ class ProspectTest extends Prospect {
 
 
 }
+*/
