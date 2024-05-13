@@ -4,9 +4,6 @@ FROM openjdk:21
 WORKDIR /app
 # Copie du fichier JAR depuis le système hôte vers le répertoire /app dans le conteneur
 COPY ecfpoo.jar /out/ecfpoo.jar
-
-
-
 # Commande à exécuter lorsque le conteneur démarre
 CMD ["java", "-jar", "ecfpoo.jar"]
 
