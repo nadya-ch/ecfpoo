@@ -56,7 +56,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 #          creation de docker
   docker-build-image-push:
-    if: ${{github.ref=='refs/heads/main'}}                       # ???
+    if: ${{ github.ref == 'refs/heads/main' }}                       # ???
     runs-on: ubuntu-latest
     needs:
       - project-build
@@ -80,9 +80,9 @@ jobs:
           context:
           file: Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USER}= /ecfpoo:latest
-#            message
-      - run: echo " this job status is ${{ job.status}} ,"
+          tags: ${{ secrets.DOCKERHUB_USER }}/ecfpoo:latest
+      #            message
+      - run: echo " this job status is ${{ job.status  }} ,"
 
 
 
