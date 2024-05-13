@@ -1,5 +1,4 @@
 name: Build
-
 on:
   push:
     branches:
@@ -12,7 +11,7 @@ jobs:
     name: init workflow
     runs-on: ubuntu-latest
     steps:
-      - rub: echo " job is now running"
+      - run: echo " job is now running"
 
 
   project-build:
@@ -21,7 +20,7 @@ jobs:
     needs: init-workfkow
     steps:
       - name: checkout code
-        use: actions/checkout àv4
+        uses: actions/checkout àv4
 
       - name: set up jdk
         uses: actions/setup-java@v4

@@ -16,6 +16,7 @@ public class Main {
 
             fh.setFormatter(new FormatterLog());
             LoggerExo.LOGGER.log(Level.INFO, "début pg");
+            System.out.println("l'application de reverso ");
 
         }
 
