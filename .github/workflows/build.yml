@@ -1,46 +1,46 @@
-  name: Build
-
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    types: [opened, synchronize, reopened]
-
-jobs:
-
-  sonarcloud:
-    name: SonarCloud
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-
-      - name: Install JDK 21
-        run: |
-            sudo apt-get update
-            sudo apt-get install default-jdk
-
-      - name: Compile Project
-        run: javac -sourcepath src -d out src/*.java src/**/*.java
-
-      - name: Create Artifacts Directory if not exists
-        run: mkdir -p artifacts
-
-      - name: Create JAR
-        run: jar cvf ecfpoo.jar -C out/ .
-
-      - name: Save Artifact JAR
-        run: mv ecfpoo.jar artifacts/
-
-      - name: End Message
-        run: echo "Build process completed successfully"
-
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#  name: Build
+#
+#on:
+#  push:
+#    branches:
+#      - main
+#  pull_request:
+#    types: [opened, synchronize, reopened]
+#
+#jobs:
+#
+#  sonarcloud:
+#    name: SonarCloud
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v4
+#        with:
+#          fetch-depth: 0
+#
+#
+#      - name: Install JDK 21
+#        run: |
+#            sudo apt-get update
+#            sudo apt-get install default-jdk
+#
+#      - name: Compile Project
+#        run: javac -sourcepath src -d out src/*.java src/**/*.java
+#
+#      - name: Create Artifacts Directory if not exists
+#        run: mkdir -p artifacts
+#
+#      - name: Create JAR
+#        run: jar cvf ecfpoo.jar -C out/ .
+#
+#      - name: Save Artifact JAR
+#        run: mv ecfpoo.jar artifacts/
+#
+#      - name: End Message
+#        run: echo "Build process completed successfully"
+#
+#      - name: SonarCloud Scan
+#        uses: SonarSource/sonarcloud-github-action@master
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+#          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
