@@ -3,8 +3,8 @@ FROM openjdk:21
 # Définition du répertoire de travail dans le conteneur
 WORKDIR /app
 # Copie du fichier JAR depuis le système hôte vers le répertoire /app dans le conteneur
-#COPY ecfpoo.jar /app/ecfpoo.jar
-COPY ecfpoo.jar /ecfpoo.jar
+COPY ecfpoo.jar /out/ecfpoo.jar
+
 
 
 # Commande à exécuter lorsque le conteneur démarre
