@@ -82,5 +82,4 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USER }}/ecfpoo:latest
 
-
       - run: echo "Le statut de ce job est ${{ job.status }}."
