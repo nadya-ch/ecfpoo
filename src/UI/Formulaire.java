@@ -167,7 +167,7 @@ public class Formulaire extends JDialog {
                             String prospe_interr = txtnbemploy_prospectinteress.getText();
 
 
-                            Prospect prospect = new Prospect(0, raison_sociale, numrue, nomrue, code_postale, ville, tel,
+                            Prospect prospect = new Prospect(Integer.parseInt(txtident.getText()), raison_sociale, numrue, nomrue, code_postale, ville, tel,
                                     email, comment, date_prosp, prospe_interr);
                             ControleurFormulaire.modification(prospect);
                         }JOptionPane.showMessageDialog(null, "vous venez de modifer un "+client_prospect);

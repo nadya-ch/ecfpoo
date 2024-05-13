@@ -1,0 +1,92 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  init-workflow:
+    name: init workflow
+    runs-on: ubuntu-latest
+    steps:
+      - rub: echo " job is now running"
+
+
+  project-build:
+    name: construct java jar
+    runs-on: ubuntu-latest
+    needs: init-workfkow
+    steps:
+      - name: checkout code
+        use: actions/checkout àv4
+
+      - name: set up jdk
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temuriné
+          java-version: '21'
+
+
+#      compilation du projet
+      - name: compile java sources
+        run: |
+          javac -d out src/*.java src/**/*.java
+          cd out
+          ls -al
+#       creation du jar
+      - name: create JAR
+        run: |
+         ls -al
+         jar -cvfm "out/ecfpoo.jar" "src/Manifest.txt" -c out .
+          jar -tf out/ecfpoo.jar
+#          sauvegarde de l'artifact
+      - name: upload jar
+        uses: actions/upload-artifact@v4
+        with:
+          name: ecfpoo.jar
+          path: out/ecfpoo.jar
+#            message
+      - run: echo " this job's status is ${{job.status}},"
+      - name: SonarCloud Scan
+        uses: SonarCource/sonarcloud-github-action@maqter
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#          creation de docker
+  docker-build-image-push:
+    if: ${{github.ref=='refs/heads/main'}}                       # ???
+    runs-on: ubuntu-latest
+    needs:
+      - project-build
+    steps:
+      - uses: actions/checkout@v4
+      - name: set up Qemu
+        uses: docker/setup-qemu-actions@v3
+
+      - name: set up docker build
+        uses: docker/setup-buildx-actions@v3
+#        mise en relation docker
+      - name: connect to docker hub
+        uses: docker/login-actions@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USER}}
+          password: ${{ secrets.DOCKERHUB_PASSWORD}}
+#        recupéartion de l'artifact
+      - name: build and push
+        uses: docker/build-push-actions@v5
+        with:
+          context:
+          file: Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USER}= /ecfpoo:latest
+#            message
+      - run: echo " this job status is ${{ job.status}} ,"
+
+
+
+
+
+           

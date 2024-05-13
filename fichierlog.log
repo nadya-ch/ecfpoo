@@ -2750,3 +2750,6 @@ The last packet successfully received from the server was 22 217 milliseconds 
 22/04/2024 11:01:04 Level : INFO / Message : début pg / Méthode : main / Classe : Main
 22/04/2024 11:01:04 Level : INFO / Message : fin pg / Méthode : main / Classe : Main
 22/04/2024 11:01:08 Level : INFO / Message : connexion établie / Méthode : getInstance / Classe : DAO.Connexion
+06/05/2024 10:10:50 Level : INFO / Message : début pg / Méthode : main / Classe : Main
+06/05/2024 10:10:50 Level : INFO / Message : fin pg / Méthode : main / Classe : Main
+06/05/2024 10:10:54 Level : INFO / Message : connexion établie / Méthode : getInstance / Classe : DAO.Connexion
