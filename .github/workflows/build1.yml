@@ -21,6 +21,7 @@ jobs:
     steps:
       - name: Checkout du code
         uses: actions/checkout@v4
+        
 
       - name: Configuration du JDK
         uses: actions/setup-java@v4
@@ -33,6 +34,8 @@ jobs:
           javac -d out src/*.java src/**/*.java
           cd out
           ls -al
+          
+
       # Création du fichier JAR à partir des fichiers compilés
       - name: Création du JAR
         run: |
