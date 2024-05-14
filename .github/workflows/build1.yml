@@ -11,8 +11,9 @@ jobs:
     name: Initialisation du workflow
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Le job est en cours."
+      - run: echo "Le job est en cours."    # Affiche un message indiquant que le job est en cours.
 
+  # Étape pour récupérer le code source
   project-build:
     name: Construction du JAR Java
     runs-on: ubuntu-latest
@@ -26,27 +27,28 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
-
+      # Étape pour compiler les sources Java
       - name: Compilation des sources Java
         run: |
           javac -d out src/*.java src/**/*.java
           cd out
           ls -al
-
+      # Création du fichier JAR à partir des fichiers compilés
       - name: Création du JAR
         run: |
           ls -al
           jar -cvfm "out/ecfpoo.jar" "src/Manifest.txt" -C out .
           jar -tf out/ecfpoo.jar
-
+      # Téléchargement du fichier JAR en tant qu'artifact
       - name: Upload du JAR
         uses: actions/upload-artifact@v4
         with:
           name: ecfpoo.jar
           path: out/ecfpoo.jar
 
-      - run: echo "Le statut de ce job est ${{ job.status }}."
+      - run: echo "Le statut de ce job est ${{ job.status }}."   # Affiche le statut du job
 
+      # Exécution de l'analyse SonarCloud
       - name: Analyse SonarCloud
         uses: SonarSource/sonarcloud-github-action@master
         env:
@@ -61,25 +63,26 @@ jobs:
     steps:
       - name: Checkout du code
         uses: actions/checkout@v4
-
+      # Configuration de Qemu pour le support de l'architecture cible
       - name: Configuration de Qemu
         uses: docker/setup-qemu-action@v1
-
+      # Configuration de Docker Buildx pour la création d'images multi-plateformes
       - name: Configuration de Docker Buildx
         uses: docker/setup-buildx-action@v1
-
+      # Connexion à Docker Hub avec les informations d'identification fournies
       - name: Connexion à Docker Hub
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-
+      # Construction de l'image Docker et envoi vers Docker Hub
       - name: Construction et envoi
         uses: docker/build-push-action@v2
         with:
-          context: .
+          context: .   # Contexte de la construction dans le répertoire actuel
+          # Utilisation du fichier Dockerfile pour la construction
           file: Dockerfile
-          push: true
-          tags: ${{ secrets.DOCKERHUB_USER }}/ecfpoo:latest
+          push: true   # Envoi de l'image vers Docker Hub
+          tags: ${{ secrets.DOCKERHUB_USER }}/ecfpoo:latest  # Balises pour l'image Docker
 
       - run: echo "Le statut de ce job est ${{ job.status }}."
