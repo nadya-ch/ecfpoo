@@ -29,11 +29,26 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Installer phpMyAdmin
-        run: sudo apt-get update && sudo apt-get install -y phpmyadmin
-      
+      version: '3.8'
 
-      # Étape pour compiler les sources Java
+      services:
+        ecfpoo:
+          image: your-image:tag
+          ports:
+            - "8080:8080"  # Adapter le port selon votre besoin
+
+        phpmyadmin:
+          image: phpmyadmin/phpmyadmin
+          environment:
+            - PMA_ARBITRARY=1
+          ports:
+            - "8888:80"  # Adapter le port selon votre besoin
+          depends_on:
+            - ecfpoo
+
+
+
+        # Étape pour compiler les sources Java
       - name: Compilation des sources Java
         run: |
           javac -d out src/*.java src/**/*.java
