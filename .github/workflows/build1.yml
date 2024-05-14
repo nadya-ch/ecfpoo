@@ -28,6 +28,10 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
+
+      - name: Installer phpMyAdmin
+        run: apt-get update && apt-get install -y phpmyadmin
+
       # Étape pour compiler les sources Java
       - name: Compilation des sources Java
         run: |
