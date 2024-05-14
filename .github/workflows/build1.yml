@@ -37,8 +37,7 @@ jobs:
       - name: Création du JAR
         run: |
           ls -al
-#          jar -cvfm "out/ecfpoo.jar" "src/Manifest.txt" -C out .
-          jar -cvfm ecfpoo.jar Manifest.txt -C out .
+          jar -cvfm "out/ecfpoo.jar" "src/Manifest.txt" -C out .       
                
           jar -tf out/ecfpoo.jar
       # Téléchargement du fichier JAR en tant qu'artifact
